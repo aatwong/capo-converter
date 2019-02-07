@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { ConverterComponent } from './converter/converter.component';
+import { ConverterService } from './converter/converter.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConverterComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ ConverterService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

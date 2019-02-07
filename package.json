@@ -44,5 +44,15 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.",
+  "main": "karma.conf.js",
+  "keywords": [
+    "capo",
+    "transpose",
+    "transposer",
+    "guitar",
+    "converter"
+  ],
+  "author": "Andrew Atwong"
 }
