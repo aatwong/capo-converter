@@ -55,8 +55,20 @@ export class ConverterComponent implements OnInit {
     return;
   }
 
+  transposeByPitchNum(startingPitchNum: number, semitonesUp: number): number {
+    return ((startingPitchNum + semitonesUp) % 12);
+  }
 
+  transposePitchNameBySemitonesUp(pitchName: string, semitonesUp: number): Pitch {
+    const originPitchNum = this.getPitchNumByName(pitchName);
+    const transposedPitchNum = this.transposeByPitchNum(originPitchNum, semitonesUp);
+    console.log(this.getPitchByNum(transposedPitchNum));
+    return this.getPitchByNum(transposedPitchNum);
+  }
 
+  clearForm() {
+    // TODO
+  }
 
 
 }
