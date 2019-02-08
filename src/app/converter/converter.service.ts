@@ -96,6 +96,7 @@ export class ConverterService {
     'b+': 0,
     'b#': 0,
     'c': 0,
+    'cnatural': 0,
 
     'csharp': 1,
     'c+': 1,
@@ -105,6 +106,7 @@ export class ConverterService {
     'db': 1,
 
     'd': 2,
+    'dnatural': 2,
 
     'dsharp': 3,
     'd+': 3,
@@ -114,6 +116,7 @@ export class ConverterService {
     'eb': 3,
 
     'e': 4,
+    'enatural': 4,
     'fflat': 4,
     'f-': 4,
     'fb': 4,
@@ -122,6 +125,7 @@ export class ConverterService {
     'e+': 5,
     'e#': 5,
     'f': 5,
+    'fnatural': 5,
 
     'fsharp': 6,
     'f+': 6,
@@ -131,6 +135,7 @@ export class ConverterService {
     'gb': 6,
 
     'g': 7,
+    'gnatural': 7,
 
     'gsharp': 8,
     'g+': 8,
@@ -140,6 +145,7 @@ export class ConverterService {
     'ab': 8,
 
     'a': 9,
+    'anatural': 9,
 
     'asharp': 10,
     'a+': 10,
@@ -149,10 +155,10 @@ export class ConverterService {
     'bb': 10,
 
     'b': 11,
+    'bnatural': 11,
     'cflat': 11,
     'c-': 11,
     'cb': 11
-
   };
 
   constructor() { }

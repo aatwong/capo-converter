@@ -1,6 +1,47 @@
-<p>
-  converter works!
-</p>
+<!-- <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Collapsible Group Item #1
+          </button>
+        </h2>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+  </div> -->
 
-
-<button (click)="transposePitchNameBySemitonesUp('g', -2)">run!</button>
+<div class="container" [formGroup]="transpositionForm">
+  <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="capoPosition">Capo Fret</label>
+        <select class="form-control input-field" id="capoPosition" formControlName="capoPosition">
+          <option *ngFor="let fret of frets" [ngValue]="fret">
+            {{fret.name}}
+          </option>
+        </select>
+      </div>
+      <button type="button" id="btnCapoPosition" class="btn btn-primary btn-sm" (click)="generateCapoPosition()" [disabled]="allFieldsStable" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Find Fret</button>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="chordShape">Chord Shape</label>
+        <input type="text" class="form-control input-field" id="chordShape" placeholder="" formControlName="chordShape">
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="generateChordShape()" [disabled]="allFieldsStable">Find Chord Shape</button>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <label for="chordSound">Chord Sound</label>
+        <input type="text" class="form-control input-field" id="chordSound" placeholder="" formControlName="chordSound">
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="generateChordSound()" [disabled]="allFieldsStable">Find Chord Sound</button>
+    </div>
+  </div>
+</div>
