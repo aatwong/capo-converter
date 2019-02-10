@@ -1,6 +1,11 @@
-.container {
-    text-align: center;
+
+#description-text {
+    max-width: 545px;
+}
+
+#transposition-form {
     max-width: 600px;
+    text-align: center;
 }
 
 .input-field {

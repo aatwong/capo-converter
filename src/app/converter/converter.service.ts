@@ -88,7 +88,7 @@ export class ConverterService {
         accidental: false,
         sharpLetter: null,
         flatLetter: null
-    },
+    }
   ];
 
   public pitchNameMap: any = { // toLowercase and remove spaces

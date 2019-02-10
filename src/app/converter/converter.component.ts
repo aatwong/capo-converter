@@ -17,9 +17,11 @@ declare var jQuery: any;
 export class ConverterComponent implements OnInit, AfterViewInit {
 
   public allFieldsStable: boolean;
+  public capoChartsGoogleSearchUrl = 'https://www.google.com/search?safe=off&q=guitar+capo+chart&tbm=isch&source=univ&sa=X&ved=2ahUKEwigs768q63gAhU_HzQIHf97CL8QsAR6BAgEEAE&biw=1333&bih=948';
+  public rootWikiUrl = 'https://en.wikipedia.org/wiki/Root_(chord)';
 
   private frets = [
-    { name: 'Open', fretNum: 0 },
+    { name: 'No Capo', fretNum: 0 },
     { name: '1', fretNum: 1 },
     { name: '2', fretNum: 2 },
     { name: '3', fretNum: 3 },
@@ -121,7 +123,7 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     const capoPosition = this.transpositionForm.value.capoPosition;
     const chordShape = this.transpositionForm.value.chordShape;
     if (!chordShape) {
-      this.triggerErrorModal('Please enter a chord shape.');
+      this.triggerErrorModal(`Please enter the Chord Shape you want to play. You'll just need the root note (e.g. "C").`);
       return;
     } else if (!this.isValidPitchInput(chordShape)) {
       this.triggerErrorModal(
@@ -144,7 +146,7 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     const capoPosition = this.transpositionForm.value.capoPosition;
     const chordSound = this.transpositionForm.value.chordSound;
     if (!chordSound) {
-      this.triggerErrorModal('Please enter the desired chord sound.');
+      this.triggerErrorModal(`Please enter the desired Chord Sound you want to hear. You'll just need the root note (e.g. "C").`);
       return;
     } else if (!this.isValidPitchInput(chordSound)) {
       this.triggerErrorModal(
@@ -167,13 +169,13 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     const chordShape = this.transpositionForm.value.chordShape;
     const chordSound = this.transpositionForm.value.chordSound;
     if (!chordShape && !chordSound) {
-      this.triggerErrorModal('Please enter the chord shape and desired chord sound.');
+      this.triggerErrorModal('Please enter the Chord Shape and desired Chord Sound.');
       return;
     } else if (!chordShape) {
-      this.triggerErrorModal('Please enter a chord shape.');
+      this.triggerErrorModal(`Please enter the Chord Shape you want to play. You'll just need the root note (e.g. "C").`);
       return;
     } else if (!chordSound) {
-      this.triggerErrorModal('Please enter the desired chord sound.');
+      this.triggerErrorModal(`Please enter the desired Chord Sound you want to hear. You'll just need the root note (e.g. "C").`);
       return;
     } else if (!this.isValidPitchInput(chordShape)) {
       this.triggerErrorModal(
