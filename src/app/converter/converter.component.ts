@@ -20,7 +20,7 @@ export class ConverterComponent implements OnInit, AfterViewInit {
   public capoChartsGoogleSearchUrl = 'https://www.google.com/search?safe=off&q=guitar+capo+chart&tbm=isch&source=univ&sa=X&ved=2ahUKEwigs768q63gAhU_HzQIHf97CL8QsAR6BAgEEAE&biw=1333&bih=948';
   public rootWikiUrl = 'https://en.wikipedia.org/wiki/Root_(chord)';
 
-  private frets = [
+  public frets = [
     { name: 'No Capo', fretNum: 0 },
     { name: '1', fretNum: 1 },
     { name: '2', fretNum: 2 },
