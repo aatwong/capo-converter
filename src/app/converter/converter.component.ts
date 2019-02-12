@@ -20,6 +20,10 @@ export class ConverterComponent implements OnInit, AfterViewInit {
   public capoChartsGoogleSearchUrl = 'https://www.google.com/search?safe=off&q=guitar+capo+chart&tbm=isch&source=univ&sa=X&ved=2ahUKEwigs768q63gAhU_HzQIHf97CL8QsAR6BAgEEAE&biw=1333&bih=948';
   public rootWikiUrl = 'https://en.wikipedia.org/wiki/Root_(chord)';
 
+  public showCollapseOne = false;
+  public showCollapseTwo = false;
+  public showCollapseThree = false;
+
   private frets = [
     { name: 'No Capo', fretNum: 0 },
     { name: '1', fretNum: 1 },
@@ -55,41 +59,6 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     // $('[data-toggle="tooltip"]').tooltip();
   }
 
-  getPitchNumByName(pitchName: string): number {
-    const pitchMap = this.converterService.pitchNameMap; // pitchMap is a Dictionary
-    const searchName = pitchName.toLowerCase().replace(/\s/g, '');
-    let pitchNum = -1;
-    for (const key in pitchMap) {
-      if (key === searchName) {
-        pitchNum = pitchMap[key];
-      }
-    }
-    if (pitchNum < 0) {
-      console.log('Could not find the pitch: ' + pitchName);
-      return;
-    } else {
-      return pitchNum;
-    }
-  }
-
-  isValidPitchInput(pitchName: string): boolean {
-    const searchName = pitchName.toLowerCase().replace(/\s/g, '');
-    for (const key in this.converterService.pitchNameMap) {
-      if (key === searchName) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  getPitchByNum(pitchNumber: number): Pitch {
-    for (const pitch of this.converterService.scale) {
-      if (pitch.pitchNum === pitchNumber) {
-        return pitch;
-      }
-    }
-  }
-
   getInterval(startingPitch: Pitch, endingPitch: Pitch, isAscending: boolean): number { // return interval in num of semitones
     return 0;
   }
@@ -99,20 +68,6 @@ export class ConverterComponent implements OnInit, AfterViewInit {
   */
   transpose(originPitch: Pitch, semitonesUp: number): Pitch {
     return;
-  }
-
-  mod(n, m) {
-    return ((n % m) + m) % m;
-  }
-
-  transposeByPitchNum(startingPitchNum: number, semitonesUp: number): number {
-    return (this.mod(startingPitchNum + semitonesUp, 12));
-  }
-
-  transposePitchNameBySemitonesUp(pitchName: string, semitonesUp: number): Pitch {
-    const originPitchNum = this.getPitchNumByName(pitchName);
-    const transposedPitchNum = this.transposeByPitchNum(originPitchNum, semitonesUp);
-    return this.getPitchByNum(transposedPitchNum);
   }
 
   resetForm() {
@@ -125,13 +80,13 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     if (!chordShape) {
       this.triggerErrorModal(`Please enter the Chord Shape you want to play. You'll just need the root note (e.g. "C").`);
       return;
-    } else if (!this.isValidPitchInput(chordShape)) {
+    } else if (!this.converterService.isValidPitchInput(chordShape)) {
       this.triggerErrorModal(
         `We couldn't identify "${chordShape}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
       return;
     }
-    const chordSoundObj = this.transposePitchNameBySemitonesUp(chordShape, capoPosition.fretNum);
+    const chordSoundObj = this.converterService.transposePitchNameBySemitonesUp(chordShape, capoPosition.fretNum);
     let chordSoundDisplayName = chordSoundObj.letter.toUpperCase();
     if (chordSoundObj.accidental) {
       chordSoundDisplayName += ' sharp';
@@ -148,13 +103,13 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     if (!chordSound) {
       this.triggerErrorModal(`Please enter the desired Chord Sound you want to hear. You'll just need the root note (e.g. "C").`);
       return;
-    } else if (!this.isValidPitchInput(chordSound)) {
+    } else if (!this.converterService.isValidPitchInput(chordSound)) {
       this.triggerErrorModal(
         `We couldn't identify "${chordSound}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
       return;
     }
-    const chordShapeObj = this.transposePitchNameBySemitonesUp(chordSound, -capoPosition.fretNum);
+    const chordShapeObj = this.converterService.transposePitchNameBySemitonesUp(chordSound, -capoPosition.fretNum);
     let chordShapeDisplayName = chordShapeObj.letter.toUpperCase();
     if (chordShapeObj.accidental) {
       chordShapeDisplayName += ' sharp';
@@ -177,20 +132,20 @@ export class ConverterComponent implements OnInit, AfterViewInit {
     } else if (!chordSound) {
       this.triggerErrorModal(`Please enter the desired Chord Sound you want to hear. You'll just need the root note (e.g. "C").`);
       return;
-    } else if (!this.isValidPitchInput(chordShape)) {
+    } else if (!this.converterService.isValidPitchInput(chordShape)) {
       this.triggerErrorModal(
         `We couldn't identify "${chordShape}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
       return;
-    } else if (!this.isValidPitchInput(chordSound)) {
+    } else if (!this.converterService.isValidPitchInput(chordSound)) {
       this.triggerErrorModal(
         `We couldn't identify "${chordSound}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
       return;
     }
-    const shapePitchNum = this.getPitchNumByName(chordShape);
-    const soundPitchNum = this.getPitchNumByName(chordSound);
-    const capoFret = this.mod(soundPitchNum - shapePitchNum, 12);
+    const shapePitchNum = this.converterService.getPitchNumByName(chordShape);
+    const soundPitchNum = this.converterService.getPitchNumByName(chordSound);
+    const capoFret = this.converterService.mod(soundPitchNum - shapePitchNum, 12);
     this.transpositionForm.patchValue({
       capoPosition: this.getFretObject(capoFret)
     });

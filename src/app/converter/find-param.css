@@ -1,0 +1,31 @@
+.accordion-field-label {
+    padding-top: 6px; 
+}
+
+.accordion-input {
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    /* width: 50%; */
+    max-width: 500px;
+}
+
+.btn-link {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.input-field {
+    max-width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.answer {
+    padding-top: 8px;
+    max-width: 100px;
+    margin: 0 auto;
+    /* text-align: center; */
+}

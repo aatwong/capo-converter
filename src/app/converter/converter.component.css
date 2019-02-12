@@ -13,3 +13,28 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.accordion {
+    padding-top: 30px;
+}
+
+/* --- */
+
+.accordion-field-label {
+    padding-top: 6px; 
+}
+
+.accordion-input {
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    /* width: 50%; */
+    max-width: 500px;
+}
+
+.btn-link {
+    padding-left: 0px;
+    padding-right: 0px;
+}

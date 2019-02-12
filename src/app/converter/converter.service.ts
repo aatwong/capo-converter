@@ -163,4 +163,53 @@ export class ConverterService {
 
   constructor() { }
 
+  getPitchNumByName(pitchName: string): number {
+    const pitchMap = this.pitchNameMap; // pitchMap is a Dictionary
+    const searchName = pitchName.toLowerCase().replace(/\s/g, '');
+    let pitchNum = -1;
+    for (const key in pitchMap) {
+      if (key === searchName) {
+        pitchNum = pitchMap[key];
+      }
+    }
+    if (pitchNum < 0) {
+      console.log('Could not find the pitch: ' + pitchName);
+      return;
+    } else {
+      return pitchNum;
+    }
+  }
+
+  isValidPitchInput(pitchName: string): boolean {
+    const searchName = pitchName.toLowerCase().replace(/\s/g, '');
+    for (const key in this.pitchNameMap) {
+      if (key === searchName) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getPitchByNum(pitchNumber: number): Pitch {
+    for (const pitch of this.scale) {
+      if (pitch.pitchNum === pitchNumber) {
+        return pitch;
+      }
+    }
+  }
+
+  mod(n, m) {
+    return ((n % m) + m) % m;
+  }
+
+  transposeByPitchNum(startingPitchNum: number, semitonesUp: number): number {
+    return (this.mod(startingPitchNum + semitonesUp, 12));
+  }
+
+  transposePitchNameBySemitonesUp(pitchName: string, semitonesUp: number): Pitch {
+    const originPitchNum = this.getPitchNumByName(pitchName);
+    const transposedPitchNum = this.transposeByPitchNum(originPitchNum, semitonesUp);
+    return this.getPitchByNum(transposedPitchNum);
+  }
+
 }
