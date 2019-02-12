@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConverterService } from '../converter.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-find-sound',
@@ -27,8 +27,8 @@ export class FindSoundComponent implements OnInit {
   public chordSound;
 
   findSoundForm = new FormGroup({
-    capoPosition: new FormControl(''),
-    chordShape: new FormControl('')
+    capoPosition: new FormControl('', Validators.required),
+    chordShape: new FormControl('', Validators.required)
   });
 
 
@@ -48,12 +48,15 @@ export class FindSoundComponent implements OnInit {
     const capoPosition = this.findSoundForm.value.capoPosition;
     const chordShape = this.findSoundForm.value.chordShape;
     if (!chordShape) {
-      this.triggerErrorModal(`Please enter the Chord Shape you want to play. You'll just need the root note (e.g. "C").`);
+      this.triggerErrorModal(`Please enter the Chord fingering you want to play. You'll just need the root note (e.g. "C").`);
       return;
     } else if (!this.converterService.isValidPitchInput(chordShape)) {
       this.triggerErrorModal(
         `We couldn't identify "${chordShape}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
+      return;
+    } else if (!capoPosition) {
+      this.triggerErrorModal('Please select a Capo Position');
       return;
     }
     const chordSoundObj = this.converterService.transposePitchNameBySemitonesUp(chordShape, capoPosition.fretNum);

@@ -8,8 +8,38 @@
   </div>
   <div id="collapseTwo" class="collapse" [ngClass]="{'show': showCollapseTwo}" aria-labelledby="headingTwo" data-parent="#accordionExample">
     <div class="card-body">
-      If my capo is on this fret: ___<br>
-      And I want the chord to sound like this: ___<br>
+      <div class="container" [formGroup]="findShapeForm">
+          <div class="row">
+            <div class="col-9 col-sm-8 accordion-field-label">
+              <p>If my capo is on this fret:</p>
+            </div>
+            <div class="col-3">
+              <select class="form-control input-field" id="" formControlName="capoPosition">
+                <option *ngFor="let fret of frets" [ngValue]="fret">
+                  {{fret.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-9 col-sm-8 accordion-field-label ">
+              And I want the chord to sound like:
+            </div>
+            <div class="col-3 col-sm-3">
+              <input type="text" class="form-control input-field" id="" placeholder="" formControlName="chordSound">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 accordion-field-label">
+              <button class="btn btn-link" type="button" (click)="findChordShape()">
+                What chord fingering should I play?
+              </button>
+            </div>
+            <div class="col-2 answer">
+              <h4>{{chordShape}}</h4>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

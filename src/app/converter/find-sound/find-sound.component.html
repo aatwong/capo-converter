@@ -1,4 +1,4 @@
-<div class="card">
+ <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" (click)="showCollapseOne = !showCollapseOne">
@@ -11,18 +11,18 @@
       <div class="card-body">
         <div class="container" [formGroup]="findSoundForm">
           <div class="row">
-            <div class="col-sm-8 accordion-field-label">
+            <div class="col-9 col-sm-8 accordion-field-label">
               <p>If I play this chord fingering:</p>
             </div>
-            <div class="col-sm-3">
-              <input type="text" class="form-control input-field" id="" placeholder="" formControlName="chordShape">
+            <div class="col-3">
+              <input type="text" class="form-control input-field" id="" formControlName="chordShape">
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-8 accordion-field-label ">
+            <div class="col-9 col-sm-8 accordion-field-label ">
               With my capo on this fret:
             </div>
-            <div class="col-sm-3">
+            <div class="col-3">
               <select class="form-control input-field" id="" formControlName="capoPosition">
                 <option *ngFor="let fret of frets" [ngValue]="fret">
                   {{fret.name}}
@@ -31,18 +31,16 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-8 accordion-field-label">
+            <div class="col-9 col-sm-8 accordion-field-label">
               <button class="btn btn-link" type="button" (click)="findChordSound()">
-                What chord am I actually hearing?
+                What chord am I hearing?
               </button>
             </div>
-            <div class="col-sm-2 answer">
+            <div class="col-2 answer">
               <h4>{{chordSound}}</h4>
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   </div>
