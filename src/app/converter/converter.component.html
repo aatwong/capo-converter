@@ -3,7 +3,7 @@
     Tired of using <a [href]="thirdPartyCapoChartUrl" target="_blank">guitar capo charts</a>? This calculator replaces all of them.
   </p>
   <p>
-    Simply enter the <a [href]="rootWikiUrl" target="_blank">root</a> of the chord you want to play (for example, an A# minor chord would correspond to just "A sharp") in the <i>Chord Shape</i> field, select the <i>Capo Fret</i>, and click the "Find Chord Sound" button on the right side.
+    Simply enter the <a [href]="rootWikiUrl" target="_blank">root</a> of the chord you want to play (for example, an A# minor chord would correspond to just "A sharp") in the <i>Chord Shape</i> field, select the <i>Capo Fret</i>, and click the "Find Chord Sound" button.
     Then try any other combination! Fill out the fields for the <i>other two fields</i> in order to find the missing piece!
   </p>
 </div>
@@ -36,6 +36,10 @@
       <button type="button" class="btn btn-primary btn-sm" (click)="generateChordSound()" [disabled]="allFieldsStable">Find Chord Sound</button>
     </div>
   </div>
+</div>
+
+<div class="container" id="description-text" style="padding-top: 50px; text-align: center;">
+  Confused? Try the custom calculators below instead.
 </div>
 
 <div class="accordion center" id="accordion">

@@ -37,7 +37,7 @@ export class FindSoundComponent implements OnInit {
     private converterService: ConverterService
   ) {
     this.chordSound = '';
-    this.showCollapse = false;
+    this.showCollapse = true;
   }
 
   ngOnInit() {
