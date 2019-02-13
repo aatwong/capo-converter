@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -58,7 +58,8 @@
     "transpose",
     "transposer",
     "guitar",
-    "converter"
+    "converter",
+    "chart"
   ],
   "author": "Andrew Atwong",
   "engines": {

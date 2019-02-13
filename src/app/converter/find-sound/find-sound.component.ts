@@ -25,6 +25,7 @@ export class FindSoundComponent implements OnInit {
   ];
 
   public chordSound;
+  public showCollapse: boolean;
 
   findSoundForm = new FormGroup({
     capoPosition: new FormControl('', Validators.required),
@@ -36,6 +37,7 @@ export class FindSoundComponent implements OnInit {
     private converterService: ConverterService
   ) {
     this.chordSound = '';
+    this.showCollapse = false;
   }
 
   ngOnInit() {
@@ -52,7 +54,8 @@ export class FindSoundComponent implements OnInit {
       return;
     } else if (!this.converterService.isValidPitchInput(chordShape)) {
       this.triggerErrorModal(
-        `We couldn't identify "${chordShape}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
+        `We couldn't identify "${chordShape}" as a pitch. Please enter a valid pitch.
+         Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
       return;
     } else if (!capoPosition) {

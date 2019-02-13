@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class FindShapeComponent implements OnInit {
 
-  private frets = [
+  frets = [
     { name: 'No Capo', fretNum: 0 },
     { name: '1', fretNum: 1 },
     { name: '2', fretNum: 2 },
@@ -25,6 +25,7 @@ export class FindShapeComponent implements OnInit {
   ];
 
   public chordShape;
+  public showCollapse: boolean;
 
   findShapeForm = new FormGroup({
     capoPosition: new FormControl(''),
@@ -35,6 +36,7 @@ export class FindShapeComponent implements OnInit {
     private converterService: ConverterService
   ) {
     this.chordShape = '';
+    this.showCollapse = false;
   }
 
   ngOnInit() {
@@ -54,7 +56,8 @@ export class FindShapeComponent implements OnInit {
       return;
     } else if (!this.converterService.isValidPitchInput(chordSound)) {
       this.triggerErrorModal(
-        `We couldn't identify "${chordSound}" as a pitch. Please enter a valid pitch. Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
+        `We couldn't identify "${chordSound}" as a pitch. Please enter a valid pitch.
+         Remember, all you need to enter is the pitch of the root note of the chord. For example, "B flat minor" would just be "B flat".`
       );
       return;
     }
