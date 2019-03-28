@@ -25,7 +25,7 @@ export class FindShapeComponent implements OnInit {
   ];
 
   public chordShape;
-  public showCollapse: boolean;
+  public showCollapsible: boolean;
 
   findShapeForm = new FormGroup({
     capoPosition: new FormControl(''),
@@ -36,7 +36,7 @@ export class FindShapeComponent implements OnInit {
     private converterService: ConverterService
   ) {
     this.chordShape = '';
-    this.showCollapse = false;
+    this.showCollapsible = true;
   }
 
   ngOnInit() {

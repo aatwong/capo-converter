@@ -1,29 +1,7 @@
-
 #title, h2{
     padding: 10px;
     text-align: center;
 }
-
-#description-text {
-    max-width: 545px;
-}
-
-#transposition-form {
-    max-width: 600px;
-    text-align: center;
-}
-
-.input-field {
-    max-width: 100px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.accordion {
-    padding-top: 30px;
-}
-
-/* --- */
 
 .accordion-field-label {
     padding-top: 6px; 
@@ -42,4 +20,9 @@
 .btn-link {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+#teaser-text {
+    padding-top: 30px;
+    text-align: center;
 }

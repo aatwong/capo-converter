@@ -25,7 +25,7 @@ export class FindFretComponent implements OnInit {
   ];
 
   public capoPosition;
-  public showCollapse: boolean;
+  public showCollapsible: boolean;
 
   findCapoPositionForm = new FormGroup({
     chordShape: new FormControl(''),
@@ -36,7 +36,7 @@ export class FindFretComponent implements OnInit {
     private converterService: ConverterService
   ) {
     this.capoPosition = '';
-    this.showCollapse = false;
+    this.showCollapsible = true;
   }
 
   ngOnInit() {

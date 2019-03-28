@@ -25,7 +25,7 @@ export class FindSoundComponent implements OnInit {
   ];
 
   public chordSound;
-  public showCollapse: boolean;
+  public showCollapsible: boolean;
 
   findSoundForm = new FormGroup({
     capoPosition: new FormControl('', Validators.required),
@@ -37,7 +37,7 @@ export class FindSoundComponent implements OnInit {
     private converterService: ConverterService
   ) {
     this.chordSound = '';
-    this.showCollapse = true;
+    this.showCollapsible = true;
   }
 
   ngOnInit() {

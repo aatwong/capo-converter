@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-header" id="headingTwo">
     <h2 class="mb-0">
-      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" (click)="showCollapse = !showCollapse">
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" (click)="showCollapsible = !showCollapsible">
         What chord fingering should I play?
       </button>
     </h2>
   </div>
-  <div id="collapseTwo" class="collapse" [ngClass]="{'show': showCollapse}" aria-labelledby="headingTwo" data-parent="#accordionExample">
+  <div id="collapseTwo" class="collapse" [ngClass]="{'show': showCollapsible}" aria-labelledby="headingTwo" data-parent="#accordionExample">
     <div class="card-body">
       <div class="container" [formGroup]="findShapeForm">
           <div class="row">
